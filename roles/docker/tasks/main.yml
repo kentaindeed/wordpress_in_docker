@@ -1,0 +1,27 @@
+---
+- name: Download Docker Compose v2.21.0
+  ansible.builtin.get_url:
+    url: https://github.com/docker/compose/releases/download/v2.21.0/docker-compose-{{
+      ansible_system }}-{{ ansible_architecture }}
+    dest: /usr/local/bin/docker-compose
+    mode: "0755"
+    owner: root
+    group: root
+
+
+- name: install docker in alma 8
+  yum:
+    name: docker-ce
+    state: present
+  # when: ansible_distribution == "AlmaLinux" and ansible_distribution_major_version == "8"
+
+
+# - name: install docker compose
+#   ansible.builtin.shell: curl -L
+#     "https://github.com/docker/compose/releases/download/v2.21.0/docker-compose-$(uname
+#     -s)-$(uname -m)" -o /usr/local/bin/docker-compose
+# - name: start docker
+#   ansible.builtin.service:
+#     name: docker
+#     state: started
+#     enabled: true
