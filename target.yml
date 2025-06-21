@@ -6,7 +6,7 @@
 ###############################################
 
 - name: docker でwordpress 環境
-  hosts: target
+  hosts: localhost
   gather_facts: true
   remote_user: vagrant
   become: yes
