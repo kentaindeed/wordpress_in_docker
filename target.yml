@@ -12,4 +12,4 @@
   become: yes
   roles:
     - docker
-    # - wordpress
+    - wordpress

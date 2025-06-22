@@ -3,8 +3,20 @@
 ###############################################
 
 # docker がstart しているかどうか確認
+- name: docker status check
+  ansible.builtin.command: systemctl status docker
+  register: docker_status_check
+  ignore_errors: true
 
+- name: Check if Docker is active (running)
+  debug:
+    msg: "Docker service is running."
+  when: "'active (running)' in docker_status_check.stdout | lower"
 
+- name: Display message if Docker is not active
+  debug:
+    msg: "Docker service is NOT running."
+  when: not ('active (running)' in docker_status_check.stdout | lower)
 
 
 # shell を実行

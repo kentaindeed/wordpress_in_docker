@@ -14,7 +14,7 @@
       - runc
       - containers-common
     state: absent
-    ignore_errors: yes
+  ignore_errors: true
 
 
 - name: Download docker repo
