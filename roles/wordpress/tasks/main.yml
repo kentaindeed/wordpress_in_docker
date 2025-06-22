@@ -19,12 +19,10 @@
   when: not ('active (running)' in docker_status_check.stdout | lower)
 
 
-# shell を実行
+# shell ディレクトリのshellを実行
+- name: shell 前処理
+  ansible.builtin.shell: sed -i 's/\r$//' /var/code/roles/shell/documentroot-create.sh
 
+- name: shell script 実行
+  ansible.builtin.shell: /var/code/roles/shell/documentroot-create.sh
 
-
-# document root 作成されているかを確認
-
-
-
-# docker compose up -d を実行してwordpress を立ち上げる
