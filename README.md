@@ -34,6 +34,8 @@ sh docker-compose-start.sh
 
 それぞれに変数をいれてください
 ```bash
+vim .env
+
 DB_DATABASE=
 DB_USER=
 DB_PASSWORD=
